@@ -56,4 +56,4 @@ pipeline {                                    // 1  // Defines the start of the 
                 }
             }
         }
-    }                                    // 11  // Ends the 'Quality Gate' stage                                        // 3  // Ends the stages bloc                                             // 1  // Ends the pipeline block
+    }         
