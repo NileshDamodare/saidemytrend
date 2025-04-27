@@ -43,6 +43,17 @@ pipeline {                                    // 1  // Defines the start of the 
                 
                 }                             // 13  // Ends the script block for the Quality Gate stage
             }                                 // 12  // Ends the steps block for 'Quality Gate' stage
-        }                                     // 11  // Ends the 'Quality Gate' stage
-    }                                         // 3  // Ends the stages block
-}                                             // 1  // Ends the pipeline block
+        } 
+        stage("Quality Gate") {
+            steps {
+                script {
+                    timeout(time: 15, unit: 'MINUTES') {
+                        def qg = waitForQualityGate()
+                        if (qg.status != 'OK') {
+                            error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                        }
+                    }
+                }
+            }
+        }
+    }                                    // 11  // Ends the 'Quality Gate' stage                                        // 3  // Ends the stages bloc                                             // 1  // Ends the pipeline block
