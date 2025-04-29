@@ -1,3 +1,5 @@
+def registry ="https://trialgnhomq.jfrog.io/"
+
 pipeline {
     agent any
 
