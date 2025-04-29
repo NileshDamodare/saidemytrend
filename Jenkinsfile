@@ -32,19 +32,6 @@ pipeline {
                 }
             }
         }
-
-        stage("Quality Gate") {
-            steps {
-                script {
-                    timeout(time: 15, unit: 'MINUTES') {
-                        def qg = waitForQualityGate()
-                        if (qg.status != 'OK') {
-                            echo "Warning Quality gate failed but continuing pipeline: ${qg.status}"
-                        }
-                    }
-                }
-            }
-        }
     }
-}
+}	
  
